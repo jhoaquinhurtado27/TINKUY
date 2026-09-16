@@ -12,14 +12,9 @@ export default function Hero() {
           <p className="text-niebla text-lg max-w-md mb-10">
             Seleccionamos productos practicos, los probamos y te los llevamos hasta la puerta de tu casa, en cualquier region del Peru.
           </p>
-
-          
-            href="#productos"
-            className="inline-block rounded-md border-2 border-mostaza bg-mostaza text-noche font-display font-bold tracking-wide text-base md:text-lg px-8 py-4 hover:bg-arena hover:border-arena transition-colors mb-12"
-          >
+          <a href="#productos" className="inline-block rounded-md border-2 border-mostaza bg-mostaza text-noche font-display font-bold tracking-wide text-base md:text-lg px-8 py-4 hover:bg-arena hover:border-arena transition-colors mb-12">
             COMPRALO YA
           </a>
-
           <div className="flex flex-wrap gap-8">
             <div className="flex items-center gap-3">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-mostaza shrink-0">
@@ -39,16 +34,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
         <div className="relative h-[320px] md:h-[560px] w-full">
-          <Image
-            src="/hero-tinkuy.jpg"
-            alt="Repartidor Tinkuy entregando un paquete"
-            fill
-            sizes="(max-width: 768px) 100vw, 45vw"
-            className="object-contain object-bottom"
-            priority
-          />
+          <Image src="/hero-tinkuy.jpg" alt="Repartidor Tinkuy entregando un paquete" fill sizes="(max-width: 768px) 100vw, 45vw" className="object-contain object-bottom" priority />
         </div>
       </div>
     </section>
