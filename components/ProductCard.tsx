@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
       rel="noopener noreferrer"
       className="group block"
     >
-      <div className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-noche/10">
+      <div className="relative aspect-square rounded-md overflow-hidden bg-white border border-noche/10">
         <Image
           src={product.image_url}
           alt={product.name}
@@ -20,12 +20,12 @@ export default function ProductCard({ product }: { product: Product }) {
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
         {!product.in_stock && (
-          <span className="absolute top-3 left-3 bg-noche text-arena text-xs font-medium px-3 py-1 rounded-full">
+          <span className="absolute top-3 right-3 bg-arena text-noche text-xs font-bold px-3 py-1 rounded shadow">
             Agotado
           </span>
         )}
         {hasDiscount && product.in_stock && (
-          <span className="absolute top-3 left-3 bg-tierra text-arena text-xs font-medium px-3 py-1 rounded-full">
+          <span className="absolute top-3 right-3 bg-mostaza text-noche text-xs font-bold px-3 py-1 rounded shadow">
             Oferta
           </span>
         )}
