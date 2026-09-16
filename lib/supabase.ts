@@ -1,17 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const rawKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+export const isSupabaseConfigured = Boolean(rawUrl && rawUrl.trim() && rawKey && rawKey.trim());
 
-// Si aun no configuraste las variables de entorno, usamos una URL de relleno
-// valida para que el build no falle; app/page.tsx detecta isSupabaseConfigured
-// y usa los productos de respaldo en ese caso, sin llegar a consultar nada.
-export const supabase = createClient(
-  supabaseUrl ?? 'https://placeholder.supabase.co',
-  supabaseAnonKey ?? 'placeholder-anon-key'
-);
+const supabaseUrl = isSupabaseConfigured ? (rawUrl as string) : 'https://placeholder.supabase.co';
+const supabaseAnonKey = isSupabaseConfigured ? (rawKey as string) : 'placeholder-anon-key';
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export type Product = {
   id: string;
