@@ -5,11 +5,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        noche: '#161A2E',      // fondo principal, azul-noche andino
+        noche: '#141414',      // negro principal (header/footer/nav)
         arena: '#F4EFE4',      // superficie clara
         marigold: '#D98E2B',   // acento cálido
         tierra: '#A8452F',     // acento secundario, terracota rojiza
         niebla: '#8B8FA8',     // texto secundario sobre noche
+        mostaza: '#F7C331',    // amarillo de marca (header, banner, ticker)
       },
       fontFamily: {
         display: ['var(--font-display)'],
