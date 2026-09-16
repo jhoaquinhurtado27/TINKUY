@@ -1,5 +1,7 @@
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
+import TopNav from '@/components/TopNav';
+import TickerBar from '@/components/TickerBar';
 import Hero from '@/components/Hero';
 import ProductCard from '@/components/ProductCard';
 import Footer from '@/components/Footer';
@@ -39,6 +41,8 @@ export default async function Home() {
     <>
       <AnnouncementBar />
       <Header />
+      <TopNav />
+      <TickerBar />
       <Hero />
 
       <section id="productos" className="max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-24">
