@@ -1,15 +1,61 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+const LINKS = [
+  { id: 'inicio', label: 'INICIO', href: '#inicio' },
+  { id: 'productos', label: 'PRODUCTOS', href: '#productos' },
+  { id: 'contacto', label: 'CONTACTO', href: '#contacto' },
+  { id: 'pagos', label: 'METODOS DE PAGO', href: '#pagos' },
+];
+
 export default function TopNav() {
+  const [active, setActive] = useState('inicio');
+
+  useEffect(() => {
+    const sections = LINKS.map((link) => document.getElementById(link.id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="bg-noche">
+    <div className="bg-noche sticky top-0 z-40">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-12 py-3.5">
-        <nav className="flex items-center gap-6 md:gap-8 text-xs md:text-sm font-bold tracking-wide text-arena">
-          <a href="/" className="text-mostaza">TINKUY</a>
-          <a href="/" className="hover:text-mostaza transition-colors hidden sm:inline">INICIO</a>
-          <a href="#productos" className="hover:text-mostaza transition-colors">PRODUCTOS</a>
-          <a href="#contacto" className="hover:text-mostaza transition-colors hidden sm:inline">CONTACTO</a>
-          <a href="#pagos" className="hover:text-mostaza transition-colors hidden md:inline">METODOS DE PAGO</a>
+        <nav className="flex items-center gap-3 md:gap-4 text-xs md:text-sm font-bold tracking-wide overflow-x-auto no-scrollbar">
+          <a href="#inicio" className="text-mostaza shrink-0 mr-2">TINKUY</a>
+          {LINKS.map((link) => {
+            const isActive = active === link.id;
+            return (
+              <a
+                key={link.id}
+                href={link.href}
+                aria-current={isActive ? 'true' : undefined}
+                className={`shrink-0 px-3 py-1.5 rounded-full transition-colors whitespace-nowrap ${
+                  isActive ? 'bg-mostaza text-noche' : 'text-arena hover:text-mostaza'
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
-        <div className="flex items-center gap-4 text-arena shrink-0">
+        <div className="flex items-center gap-4 text-arena shrink-0 pl-4">
           <button aria-label="Buscar" className="hover:text-mostaza transition-colors">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="7" />
