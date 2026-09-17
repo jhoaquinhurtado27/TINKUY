@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative bg-noche text-arena overflow-hidden">
+    <section id="inicio" className="relative bg-noche text-arena overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-[1.1fr_0.9fr] items-end">
         <div className="py-16 md:py-24 relative z-10">
           <p className="font-display text-sm text-mostaza mb-4">Tinkuy, en quechua, es el encuentro</p>
