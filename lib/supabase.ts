@@ -16,6 +16,8 @@ export type Product = {
   price: number;
   compare_at_price: number | null;
   image_url: string;
+  images?: string[] | null;
+  description?: string | null;
   slug: string;
   in_stock: boolean;
   category: string;
