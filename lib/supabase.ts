@@ -18,4 +18,5 @@ export type Product = {
   image_url: string;
   slug: string;
   in_stock: boolean;
+  category: string;
 };
